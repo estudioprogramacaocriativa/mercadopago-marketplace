@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background: #eeeeee;">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Conta criada na {{ appName }}</title>
+    </head>
+    <body style="margin: 0; padding: 0;">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td>
+                    <table  bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" border="0" width="600" style="border: 1px solid #ccc;">
+                        <tr>
+                            <td align="center" style="padding: 20px 20px 20px 20px; background: #fafafa; border-bottom: 1px solid #eeeeee;">
+                                <img width="120" src="cid:logo" alt="{{ appName }}" title="{{ appName }}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#ffffff" style="padding: 40px 0 40px 0;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 20px 40px 20px 40px;">
+                                    <tr>
+                                        <td style="color: #212121; font-family: Arial, sans-serif; font-size: 14px;">
+                                            <h1 style="font-size: 1.4em;">Bem-vindo(a) à {{ appName }}.</h1>
+                                            @if(user.role !== 'client')
+                                              <p>
+                                                @if(user.role === 'reseler')
+                                                Você foi cadastrado como <b>Revendedor</b> e poderá gerenciar suas vendas, produtos e clientes em nossa plataforma.
+                                                @elseif(user.role === 'master')
+                                                Você foi convidado como <b>Administrador</b> para auxiliar no gerenciamento de nossa plataforma.
+                                                @endif
+                                              </p>
+                                            @endif
+                                            <p style="color: #414141; margin-block-start: 0; margin-block-end: 3px;">Precisamos apenas que você confirme seu e-mail clicando no link abaixo. Vamos lá...</p>
+                                            <p style="color: #414141; margin-block-start: 0; margin-block-end: 3px;">
+                                                <a style="color: #6db1a2; display: inline-block; margin-top: 20px;"
+                                                    href="{{ urlSystem }}/auth/confirmar-email/{{ userToken }}"
+                                                    title="Confirmar e-mail">Confirmar e-mail</a>
+                                                </p>
+                                            <p>
+                                                <span style="font-size: .876em; color: #848484;">Caso o link acima não funcione, copie e cole a URL no seu navegador:</span>
+                                                <b style="font-size: .876em; color: #848484;">{{ urlSystem }}/auth/confirmar-email/{{ userToken }}</b>
+                                            </p>
+                                            <br>
+                                            <h3 style="margin: 0 0 0 0;">Dados de acesso</h3>
+                                            <p style="color: #414141; margin-block-start: 0; margin-block-end: 3px; margin-top: 10px;">Seu e-mail de acesso é: <strong>{{ user.email }}</strong>.</p>
+                                            @if(showPassword)
+                                            <p style="color: #414141; margin-block-start: 0; margin-block-end: 3px; margin-top: 10px;">Sua senha de acesso é: <strong>{{ showPassword }}</strong>.</p>
+                                            @endif
+                                            <p style="color: #414141; margin-block-start: 0; margin-block-end: 3px; margin-top: 5px;">Caso não lembre sua senha, <a href="{{ urlSystem }}/auth/recuperar-senha" target="_blank">clique para alterá-la</a>.</p>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 20px 0 20px 0; border-top: 1px solid #eee;">
+                                    <tr>
+                                        <td width="50%" style="color: #aaa; font-size: 12px; font-family: Arial, sans-serif; padding: 40px 40px 40px 40px;">
+                                            <img width="80" src="cid:favicon" alt="{{ appName }}" title="{{ appName }}" />
+                                        </td>
+                                        <td width="50%" align="right" style="color: #aaa; font-size: 12px; font-family: Arial, sans-serif; padding: 40px 40px 40px 40px;">
+                                            &copy; {{ appName }} {{ copyYear }}<br>
+                                            Todos os direitos reservados.
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

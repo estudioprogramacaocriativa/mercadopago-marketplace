@@ -1,0 +1,36 @@
+<tr>
+  <td bgcolor="#ffffff">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 0 40px 20px 40px;">
+          <tr>
+              <td style="color: #212121; font-family: Arial, sans-serif; font-size: 14px;">
+                  <h2 style="font-size: 1.4em;">Detalhes do seu pedido</h2>
+                  <p>Seguem abaixo os detalhes do seu pedido:</p>
+
+                  @each(item in items)
+                    <article style="display: flex; align-items-center;">
+                      <img
+                        class="border-radius: 50%;"
+                        width="75"
+                        height="75"
+                        src=""
+                        alt=""
+                      >
+                      <div style="margin-left: 20px;">
+                        <p>{{ item.model }}</p>
+                        <ul>
+                          @if(item.size_id)
+                          <li style="list-style: none;"><b>Tamanho:</b> {{ !item.sizeName ? 'Padrão' : item.sizeName }}</li>
+                          @endif
+                          @if(item.color_id)
+                          <li style="display: flex; list-style: none;"><b>Cor:</b> <span style="width: 14px; margin-left: 5px; height: 14px; display: flex; align-items: center; border-radius: 3px; background: {{ item.colorName }}"></span></li>
+                          @endif
+                          <li style="list-style: none;">{{ item.quantity }} x {{ helpers.formatPrice(item.price) }}</li>
+                        </ul>
+                      </div>
+                    </article>
+                  @endeach
+              </td>
+          </tr>
+      </table>
+  </td>
+</tr>
